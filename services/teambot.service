@@ -4,7 +4,7 @@ Description=Discord Scrim team bot
 [Service]
 Type=simple
 Restart=always
-Enviroment=TOKEN=
+Environment="TOKEN="
 ExecStart=/usr/local/bin/teambot
 
 [Install]
