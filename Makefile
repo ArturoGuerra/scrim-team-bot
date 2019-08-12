@@ -1,5 +1,10 @@
+.PHONY: all clean build deps
+
 GOBUILD = go build
 GOGET = go get -d -v
+
+all: deps clean build
+
 clean:
 	rm -rf bin
 
@@ -8,4 +13,3 @@ build:
 
 deps:
 	$(GOGET) ./...
-
