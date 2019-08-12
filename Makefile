@@ -1,5 +1,6 @@
-.PHONY: all clean build deps
+.PHONY: all clean build deps install uninstall
 
+PREFIX = /usr/local
 GOBUILD = go build
 GOGET = go get -d -v
 
@@ -13,3 +14,10 @@ build:
 
 deps:
 	$(GOGET) ./...
+
+install: bin/teambot
+	install -m0755 bin/teambot $(PREFIX)/bin/teambot
+
+uninstall: $(PREFIX)/bin/teambot
+	rm -rf $(PREFIX)/bin/teambot
+

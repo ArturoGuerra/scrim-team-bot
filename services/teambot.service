@@ -1,0 +1,11 @@
+[Unit]
+Description=Discord Scrim team bot
+
+[Service]
+Type=simple
+Restart=always
+Enviroment=TOKEN=
+ExecStart=/usr/local/bin/teambot
+
+[Install]
+WantedBy=multi-user.target
