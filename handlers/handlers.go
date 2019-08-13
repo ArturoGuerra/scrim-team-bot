@@ -20,9 +20,24 @@ func MessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
         HandleShuffle(s, m, 6)
     } else if strings.HasPrefix(m.Content, "!fours") {
         HandleShuffle(s, m, 8)
+    } else if strings.HasPrefix(m.Content, "!addme") {
+        AddMe(s, m)
     }
 }
 
+
+func AddMe(s *discordgo.Session, m *discordgo.MessageCreate) {
+    link := "https://discordapp.com/oauth2/authorize?client_id=603420223063851008&scope=bot&permissions=117760"
+
+    msg := "Add me with this [link](" + link + ")"
+
+
+    embed := &discordgo.MessageEmbed{
+        Description: msg,
+    }
+
+    s.ChannelMessageSendEmbed(m.ChannelID, embed)
+}
 
 func HandleShuffle(s *discordgo.Session, m *discordgo.MessageCreate, a int) {
     if len(m.Mentions) != a {
